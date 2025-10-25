@@ -1,6 +1,10 @@
 return {
   "mfussenegger/nvim-lint",
   event = { "BufReadPre", "BufNewFile" },
+  dependencies = {
+    "mason-org/mason.nvim",
+    opts = { ensure_installed = { "golangci-lint" } },
+  },
   config = function()
     local lint = require("lint")
 
@@ -11,6 +15,7 @@ return {
       typescriptreact = { "eslint_d" },
       svelte = { "eslint_d" },
       python = { "pylint" },
+      go = { "golangcilint" },
     }
 
     local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })

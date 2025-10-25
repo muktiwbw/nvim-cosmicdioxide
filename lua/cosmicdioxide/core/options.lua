@@ -1,5 +1,20 @@
 vim.cmd("let g:netrw_liststyle = 3")
 
+-- Silence the specific position encoding message
+local notify_original = vim.notify
+vim.notify = function(msg, ...)
+  if
+      msg
+      and (
+        msg:match 'position_encoding param is required'
+        or msg:match 'Defaulting to position encoding of the first client'
+        or msg:match 'multiple different client offset_encodings'
+      )
+  then
+    return
+  end
+  return notify_original(msg, ...)
+end
 local opt = vim.opt
 
 -- line numbers
@@ -17,7 +32,7 @@ opt.wrap = false -- disable line wrapping
 
 -- search settings
 opt.ignorecase = true -- case insensitive when searching
-opt.smartcase = true -- it knows when you want to search specifics with mixed case
+opt.smartcase = true  -- it knows when you want to search specifics with mixed case
 
 -- cursor line
 opt.cursorline = true -- highlight current cursor line
@@ -41,4 +56,3 @@ opt.splitbelow = true -- split horizontal window to the bottom
 
 -- turn off swapfile
 opt.swapfile = false
-

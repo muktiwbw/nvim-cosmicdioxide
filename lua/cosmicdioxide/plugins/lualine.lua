@@ -5,6 +5,7 @@ return {
     local lualine = require("lualine")
     local lazy_status = require("lazy.status") -- to configure lazy pending updates count
 
+    -- default colorscheme
     local colors = {
       blue = "#65D1FF",
       green = "#3EFFDC",
@@ -15,7 +16,6 @@ return {
       bg = "#112638",
       inactive_bg = "#2c3043",
     }
-
     local my_lualine_theme = {
       normal = {
         a = { bg = colors.blue, fg = colors.bg, gui = "bold" },
@@ -52,7 +52,24 @@ return {
     -- configure lualine with modified theme
     lualine.setup({
       options = {
-        theme = my_lualine_theme,
+        -- CRITICAL: Set the theme to the name of the installed colorscheme
+        theme = "everforest",
+        -- You can keep other options here if needed, like sections, etc.
+        icons_enabled = true,
+        section_separators = { left = "", right = "" },
+        component_separators = { left = "", right = "" },
+        disabled_filetypes = {
+          statusline = {},
+          winbar = {},
+        },
+        ignore_focus = {},
+        always_divide_middle = true,
+        globalstatus = false,
+        refresh = {
+          statusline = 1000,
+          tabline = 1000,
+          winbar = 1000,
+        },
       },
       sections = {
         lualine_x = {

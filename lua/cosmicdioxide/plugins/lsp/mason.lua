@@ -50,6 +50,15 @@ return {
       },
     })
   end,
-}
+  opts = {
+    ensure_installed = {
+      "goimports",
+      "gofumpt",
+      "gomodifytags",
+      "impl",
+      "golangci-lint",
+      "delve",
+    }
+  }
 
--- TODO: Setup Go lsp
+}
