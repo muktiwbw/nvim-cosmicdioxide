@@ -49,5 +49,5 @@ keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" })
 keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" })
 
 -- buffers
-keymap.set("n", "<leader>bd", "<cmd>bd", { desc = "Close current buffer" })
-keymap.set("n", "<leader>bD", "<cmd>bufdo bd", { desc = "Close all buffers" })
+keymap.set("n", "<leader>bd", "<cmd>bd<CR>", { desc = "Close current buffer" })
+keymap.set("n", "<leader>bD", "<cmd>bufdo bd<CR>", { desc = "Close all buffers" })
