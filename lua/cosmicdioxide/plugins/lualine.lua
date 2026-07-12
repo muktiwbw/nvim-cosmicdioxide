@@ -52,8 +52,7 @@ return {
     -- configure lualine with modified theme
     lualine.setup({
       options = {
-        -- CRITICAL: Set the theme to the name of the installed colorscheme
-        theme = "my_lualine_theme",
+        theme = my_lualine_theme,
         -- You can keep other options here if needed, like sections, etc.
         icons_enabled = true,
         section_separators = { left = "", right = "" },

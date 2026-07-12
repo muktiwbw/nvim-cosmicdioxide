@@ -93,10 +93,7 @@ return {
           local gopls_opts = {
             capabilities = capabilities,
             on_attach = function(client, bufnr)
-              -- 1. Run the shared keymap setup
-              shared_on_attach(client, bufnr)
-
-              -- 2. GOLANG WORKAROUND FOR SEMANTIC TOKENS
+              -- GOLANG WORKAROUND FOR SEMANTIC TOKENS
               -- https://github.com/golang/go/issues/54531#issuecomment-1464982242
               if not client.server_capabilities.semanticTokensProvider then
                 local semantic = client.config.capabilities.textDocument.semanticTokens
@@ -147,7 +144,7 @@ return {
               },
             },
           }
-          lspconfig["gopls"].setup(gopls_opts)
+          lspconfig.gopls.setup(gopls_opts)
         end,
         ["svelte"] = function()
           -- configure svelte server
