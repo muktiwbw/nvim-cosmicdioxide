@@ -24,31 +24,46 @@ return {
       },
     })
 
-    mason_lspconfig.setup({
-      -- list of servers for mason to install
-      ensure_installed = {
+    local servers = { "lua_ls" }
+
+    -- These language servers are distributed through npm. Avoid repeated
+    -- installation failures on machines where Node.js is not installed.
+    if vim.fn.executable("node") == 1 and vim.fn.executable("npm") == 1 then
+      vim.list_extend(servers, {
         "html",
         "cssls",
         "tailwindcss",
         "svelte",
-        "lua_ls",
         "graphql",
         "emmet_ls",
         "prismals",
         "pyright",
-        "gopls",
-        "tsserver",
-      },
+        "ts_ls",
+      })
+    end
+
+    if vim.fn.executable("go") == 1 then
+      table.insert(servers, "gopls")
+    end
+
+    mason_lspconfig.setup({
+      ensure_installed = servers,
     })
 
-    mason_tool_installer.setup({
-      ensure_installed = {
-        "prettier", -- prettier formatter
+    local tools = {
         "isort",    -- python formatter
         "black",    -- python formatter
         "pylint",   -- python linter
-        "eslint_d", -- js linter
-      },
+    }
+
+    -- npm-backed packages cannot be installed without Node.js. Add them when
+    -- the required runtime is available instead of failing on every startup.
+    if vim.fn.executable("node") == 1 and vim.fn.executable("npm") == 1 then
+      vim.list_extend(tools, { "prettier", "eslint_d" })
+    end
+
+    mason_tool_installer.setup({
+      ensure_installed = tools,
     })
   end,
   opts = {

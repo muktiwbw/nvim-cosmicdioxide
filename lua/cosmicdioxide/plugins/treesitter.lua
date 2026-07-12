@@ -1,5 +1,8 @@
 return {
   "nvim-treesitter/nvim-treesitter",
+  -- The main branch is an incompatible rewrite. Keep the legacy API used by
+  -- this configuration (nvim-treesitter.configs, ensure_installed, etc.).
+  branch = "master",
   event = { "BufReadPre", "BufNewFile" },
   build = ":TSUpdate",
   dependencies = {
