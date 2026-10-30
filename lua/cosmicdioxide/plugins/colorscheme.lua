@@ -2,7 +2,7 @@ return {
   {
     'sainnhe/gruvbox-material',
     lazy = false,
-    priority = 1,
+    priority = 2,
     config = function()
       -- Optionally configure and load the colorscheme
       -- directly inside the plugin declaration.
@@ -14,7 +14,7 @@ return {
   {
     'sainnhe/everforest',
     lazy = false,
-    priority = 2,
+    priority = 1,
     config = function()
       -- Optionally configure and load the colorscheme
       -- directly inside the plugin declaration.
