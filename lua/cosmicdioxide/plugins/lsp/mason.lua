@@ -48,6 +48,11 @@ return {
 
     mason_lspconfig.setup({
       ensure_installed = servers,
+      -- rustaceanvim configures and starts rust-analyzer itself.
+      -- Letting mason-lspconfig enable it creates a second, plain LSP client.
+      automatic_enable = {
+        exclude = { "rust_analyzer" },
+      },
     })
 
     local tools = {
